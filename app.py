@@ -13,16 +13,11 @@ app.secret_key = os.environ["APP_SECRET"]
 
 BASE_DIR = Path(__file__).parent
 STORAGE_DIR = BASE_DIR / "encrypted_storage"
-KEY_FILE = BASE_DIR / ".secret.key"
 DB_FILE = STORAGE_DIR / "files.json"
 
 STORAGE_DIR.mkdir(exist_ok=True)
 
-if not KEY_FILE.exists():
-    KEY_FILE.write_bytes(Fernet.generate_key())
-
-cipher = Fernet(KEY_FILE.read_bytes())
-
+cipher = Fernet(os.environ["FERNET_KEY"].encode())
 
 def get_files():
     if DB_FILE.exists():
