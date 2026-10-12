@@ -1,0 +1,8 @@
+.secret.key
+secret.key
+encrypted_storage/
+files.json
+__pycache__/
+.venv/
+venv/
+.env
