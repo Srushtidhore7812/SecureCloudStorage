@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 from cryptography.fernet import Fernet
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("APP_SECRET", "student-demo-secret-change-later")
+app.secret_key = os.environ.get["APP_SECRET"]
 
 BASE_DIR = Path(__file__).parent
 STORAGE_DIR = BASE_DIR / "encrypted_storage"
